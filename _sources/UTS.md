@@ -133,21 +133,21 @@ Misalnya pada kolom pH Tanah terdapat data:
 | 5    |    6.7 |
 
 **Rumus Mean**
-\[
+$$
 \bar{X} = \frac{\sum X}{n}
-\]
+$$
 **Perhitungan Mean**
-\[
+$$
 \bar{X} = \frac{6.5 + 7.0 + 6.8 + 6.7}{4}
-\]
+$$
 
-\[
+$$
 \bar{X} = \frac{27.0}{4}
-\]
+$$
 
-\[
+$$
 \bar{X} = 6.75
-\]
+$$
 Maka nilai missing pada kolom pH Tanah diganti menjadi: 6.75
 
 
@@ -206,9 +206,9 @@ Pada tabel tersebut, kolom ID tidak memiliki pengaruh terhadap tingkat kesuburan
 
 Tahap berikutnya adalah normalisasi menggunakan node Normalizer. Hal ini dilakukan karena KNN menggunakan perhitungan jarak antar data. Jika skala antar fitur berbeda terlalu jauh, maka hasil klasifikasi dapat menjadi bias. Oleh karena itu, semua fitur disamakan skalanya agar proses perhitungan jarak menjadi lebih adil.
 **Rumus Normalisasi (Min-Max Normalization)**
-\[
+$$
 X' = \frac{X - X_{min}}{X_{max} - X_{min}}
-\]
+$$
 \begin{itemize}
 \item $X'$ = nilai hasil normalisasi
 \item $X$ = nilai asli data
@@ -224,17 +224,17 @@ Nilai minimum ($X_{min}$) = 4.0
 Nilai maksimum ($X_{max}$) = 8.0
 
 maka: 
-\[
+$$
 X' = \frac{6.8 - 4.0}{8.0 - 4.0}
-\]
+$$
 
-\[
+$$
 X' = \frac{2.8}{4.0}
-\]
+$$
 
-\[
+$$
 X' = 0.70
-\]
+$$
 Jadi hasil normalisasi dari nilai pH Tanah 6.8 adalah: 0.70
 
 
@@ -253,31 +253,31 @@ Rasio pembagian yang digunakan:
 - 20% Testing
 
 **Perhitungan Data Training**
-\[
+$$
 Training = 80\% \times 2000
-\]
+$$
 
-\[
+$$
 Training = 0.8 \times 2000
-\]
+$$
 
-\[
+$$
 Training = 1600
-\]
+$$
 Jadi jumlah data training adalah: 1600 data
 
 **Perhitungan Data Testing**
-\[
+$$
 Training = 20\% \times 2000
-\]
+$$
 
-\[
+$$
 Training = 0.2 \times 2000
-\]
+$$
 
-\[
+$$
 Training = 400
-\]
+$$
 Jadi jumlah data training adalah: 400 data
 
 #### 8. Data Siap Digunakan

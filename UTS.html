@@ -573,20 +573,22 @@ Misalnya pada kolom pH Tanah terdapat data:</p>
 </table>
 </div>
 <p><strong>Rumus Mean</strong>
-[
+$<span class="math notranslate nohighlight">\(
 \bar{X} = \frac{\sum X}{n}
-]
-<strong>Perhitungan Mean</strong>
-[
+\)</span><span class="math notranslate nohighlight">\(
+**Perhitungan Mean**
+\)</span><span class="math notranslate nohighlight">\(
 \bar{X} = \frac{6.5 + 7.0 + 6.8 + 6.7}{4}
-]</p>
-<p>[
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
 \bar{X} = \frac{27.0}{4}
-]</p>
-<p>[
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \bar{X} = 6.75
-]
-Maka nilai missing pada kolom pH Tanah diganti menjadi: 6.75</p>
+\]</div>
+<p>Maka nilai missing pada kolom pH Tanah diganti menjadi: 6.75</p>
 </section>
 <section id="menghapus-data-duplikat">
 <h4>3. Menghapus Data Duplikat<a class="headerlink" href="#menghapus-data-duplikat" title="Link to this heading">#</a></h4>
@@ -718,14 +720,14 @@ kolom lainnya bernilai 0.</p></li>
 <h4>6. Normalisasi Data<a class="headerlink" href="#normalisasi-data" title="Link to this heading">#</a></h4>
 <p>Tahap berikutnya adalah normalisasi menggunakan node Normalizer. Hal ini dilakukan karena KNN menggunakan perhitungan jarak antar data. Jika skala antar fitur berbeda terlalu jauh, maka hasil klasifikasi dapat menjadi bias. Oleh karena itu, semua fitur disamakan skalanya agar proses perhitungan jarak menjadi lebih adil.
 <strong>Rumus Normalisasi (Min-Max Normalization)</strong>
-[
-X’ = \frac{X - X_{min}}{X_{max} - X_{min}}
-]
+$<span class="math notranslate nohighlight">\(
+X' = \frac{X - X_{min}}{X_{max} - X_{min}}
+\)</span><span class="math notranslate nohighlight">\(
 \begin{itemize}
-\item <span class="math notranslate nohighlight">\(X'\)</span> = nilai hasil normalisasi
-\item <span class="math notranslate nohighlight">\(X\)</span> = nilai asli data
-\item <span class="math notranslate nohighlight">\(X_{min}\)</span> = nilai minimum pada kolom
-\item <span class="math notranslate nohighlight">\(X_{max}\)</span> = nilai maksimum pada kolom
+\item \)</span>X’<span class="math notranslate nohighlight">\( = nilai hasil normalisasi
+\item \)</span>X<span class="math notranslate nohighlight">\( = nilai asli data
+\item \)</span>X_{min}<span class="math notranslate nohighlight">\( = nilai minimum pada kolom
+\item \)</span>X_{max}$ = nilai maksimum pada kolom
 \end{itemize}</p>
 <p><strong>Contoh Perhitungan</strong>
 Misalnya pada kolom pH Tanah:</p>
@@ -733,16 +735,18 @@ Misalnya pada kolom pH Tanah:</p>
 Nilai minimum (<span class="math notranslate nohighlight">\(X_{min}\)</span>) = 4.0
 Nilai maksimum (<span class="math notranslate nohighlight">\(X_{max}\)</span>) = 8.0</p>
 <p>maka:
-[
-X’ = \frac{6.8 - 4.0}{8.0 - 4.0}
-]</p>
-<p>[
-X’ = \frac{2.8}{4.0}
-]</p>
-<p>[
-X’ = 0.70
-]
-Jadi hasil normalisasi dari nilai pH Tanah 6.8 adalah: 0.70</p>
+$<span class="math notranslate nohighlight">\(
+X' = \frac{6.8 - 4.0}{8.0 - 4.0}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+X' = \frac{2.8}{4.0}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X' = 0.70
+\]</div>
+<p>Jadi hasil normalisasi dari nilai pH Tanah 6.8 adalah: 0.70</p>
 </section>
 <section id="pembagian-data-training-dan-testing">
 <h4>7. Pembagian Data Training dan Testing<a class="headerlink" href="#pembagian-data-training-dan-testing" title="Link to this heading">#</a></h4>
@@ -758,27 +762,31 @@ Jumlah total dataset:</p>
 <li><p>20% Testing</p></li>
 </ul>
 <p><strong>Perhitungan Data Training</strong>
-[
-Training = 80% \times 2000
-]</p>
-<p>[
+$<span class="math notranslate nohighlight">\(
+Training = 80\% \times 2000
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
 Training = 0.8 \times 2000
-]</p>
-<p>[
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 Training = 1600
-]
-Jadi jumlah data training adalah: 1600 data</p>
+\]</div>
+<p>Jadi jumlah data training adalah: 1600 data</p>
 <p><strong>Perhitungan Data Testing</strong>
-[
-Training = 20% \times 2000
-]</p>
-<p>[
+$<span class="math notranslate nohighlight">\(
+Training = 20\% \times 2000
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
 Training = 0.2 \times 2000
-]</p>
-<p>[
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 Training = 400
-]
-Jadi jumlah data training adalah: 400 data</p>
+\]</div>
+<p>Jadi jumlah data training adalah: 400 data</p>
 </section>
 <section id="data-siap-digunakan">
 <h4>8. Data Siap Digunakan<a class="headerlink" href="#data-siap-digunakan" title="Link to this heading">#</a></h4>
