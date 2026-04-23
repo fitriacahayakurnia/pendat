@@ -133,10 +133,19 @@ Misalnya pada kolom pH Tanah terdapat data:
 | 5    |    6.7 |
 
 **Rumus Mean**
+
+Rumus mean digunakan untuk menghitung nilai rata-rata dari data yang tersedia.
+
 $$
 \bar{X} = \frac{\sum X}{n}
 $$
+
 **Perhitungan Mean**
+
+Misalnya terdapat data pH Tanah sebagai berikut: 6.5, 7.0, 6.8, dan 6.7, dengan 1 data kosong.
+
+Maka perhitungan mean dilakukan sebagai berikut:
+
 $$
 \bar{X} = \frac{6.5 + 7.0 + 6.8 + 6.7}{4}
 $$
@@ -148,6 +157,8 @@ $$
 $$
 \bar{X} = 6.75
 $$
+
+Sehingga nilai missing value digantikan dengan 6.75.
 Maka nilai missing pada kolom pH Tanah diganti menjadi: 6.75
 
 
@@ -205,25 +216,32 @@ Pada tabel tersebut, kolom ID tidak memiliki pengaruh terhadap tingkat kesuburan
 #### 6. Normalisasi Data
 
 Tahap berikutnya adalah normalisasi menggunakan node Normalizer. Hal ini dilakukan karena KNN menggunakan perhitungan jarak antar data. Jika skala antar fitur berbeda terlalu jauh, maka hasil klasifikasi dapat menjadi bias. Oleh karena itu, semua fitur disamakan skalanya agar proses perhitungan jarak menjadi lebih adil.
+
 **Rumus Normalisasi (Min-Max Normalization)**
+
+Rumus normalisasi digunakan untuk menyamakan skala seluruh fitur agar perhitungan jarak pada algoritma KNN menjadi lebih adil dan akurat.
+
 $$
 X' = \frac{X - X_{min}}{X_{max} - X_{min}}
 $$
-\begin{itemize}
-\item $X'$ = nilai hasil normalisasi
-\item $X$ = nilai asli data
-\item $X_{min}$ = nilai minimum pada kolom
-\item $X_{max}$ = nilai maksimum pada kolom
-\end{itemize}
+
+Keterangan:
+
+- $X'$ = nilai hasil normalisasi  
+- $X$ = nilai asli data  
+- $X_{min}$ = nilai minimum pada kolom  
+- $X_{max}$ = nilai maksimum pada kolom  
 
 **Contoh Perhitungan**
+
 Misalnya pada kolom pH Tanah:
 
-Nilai asli (X) = 6.8
-Nilai minimum ($X_{min}$) = 4.0
-Nilai maksimum ($X_{max}$) = 8.0
+- Nilai asli ($X$) = 6.8  
+- Nilai minimum ($X_{min}$) = 4.0  
+- Nilai maksimum ($X_{max}$) = 8.0  
 
-maka: 
+Maka perhitungannya adalah:
+
 $$
 X' = \frac{6.8 - 4.0}{8.0 - 4.0}
 $$
@@ -235,8 +253,8 @@ $$
 $$
 X' = 0.70
 $$
-Jadi hasil normalisasi dari nilai pH Tanah 6.8 adalah: 0.70
 
+Jadi hasil normalisasi dari nilai pH Tanah 6.8 adalah **0.70**.
 
 #### 7. Pembagian Data Training dan Testing
 
@@ -253,6 +271,9 @@ Rasio pembagian yang digunakan:
 - 20% Testing
 
 **Perhitungan Data Training**
+
+Jumlah data training dihitung berdasarkan 80\% dari total dataset sebanyak 2000 data.
+
 $$
 Training = 80\% \times 2000
 $$
@@ -264,21 +285,28 @@ $$
 $$
 Training = 1600
 $$
-Jadi jumlah data training adalah: 1600 data
+
+Jadi jumlah data training adalah **1600 data**.
+
+---
 
 **Perhitungan Data Testing**
+
+Jumlah data testing dihitung berdasarkan 20\% dari total dataset sebanyak 2000 data.
+
 $$
-Training = 20\% \times 2000
+Testing = 20\% \times 2000
 $$
 
 $$
-Training = 0.2 \times 2000
+Testing = 0.2 \times 2000
 $$
 
 $$
-Training = 400
+Testing = 400
 $$
-Jadi jumlah data training adalah: 400 data
+
+Jadi jumlah data testing adalah **400 data**.
 
 #### 8. Data Siap Digunakan
 
@@ -355,4 +383,3 @@ Semakin tinggi nilai F1-Score, maka semakin baik keseimbangan performa model.
 Table 2: Hasil Metrik Evaluasi
 
 ![original image](https://cdn.mathpix.com/snip/images/U1UkgZZaHYv1O_BnsWXmD60PGv5UMs__PhTVm7R5izo.original.fullsize.png)
-
