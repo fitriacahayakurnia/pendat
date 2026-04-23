@@ -1,0 +1,1210 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Understanding &#8212; Fitria&#39;s Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data-understanding';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Preparation" href="data-preparation.html" />
+    <link rel="prev" title="Business Understanding" href="business-understanding.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fitri.jpeg" class="logo__image only-light" alt="Fitria's Notes - Home"/>
+    <img src="_static/fitri.jpeg" class="logo__image only-dark pst-js-only" alt="Fitria's Notes - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    240411100192 Fitria Cahaya Kurnia
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business-understanding.html">Business Understanding</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-preparation.html">Data Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imputasi-missing-value.html">Imputasi Missing Value dan Materi Normalisasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html">UTS | Analisa Kesuburan Tanah</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata-understanding.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/data-understanding.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Understanding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">1. Sumber Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">2. Deskripsi Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset">3. Eksplorasi Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-dengan-menggunakan-python">Eksplorasi Dataset dengan menggunakan Python:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-file-csv">- Upload file CSV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">- Struktur Dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-awal">-Statistik Deskriptif Awal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengecekan-data-duplikat">- Pengecekan Data Duplikat</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengecekan-data-null">- Pengecekan Data Null</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data">4. Verifikasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">5. Visualisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-jumlah-data-per-species">- Distribusi Jumlah Data per Species</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-data-fitur-numerik-pada-dataset-iris">- Distribusi Data Fitur Numerik pada Dataset Iris</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-penyebaran-data-dan-deteksi-outlier-menggunakan-boxplot">- Analisis Penyebaran Data dan Deteksi Outlier Menggunakan Boxplot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisa-korelasi">- Analisa Korelasi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-dengan-menggunakan-aplikasi-orange">Eksplorasi Dataset dengan menggunakan Aplikasi Orange:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">- Statistik Deskriptif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisa-kolerasi">- Analisa kolerasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#berikut-contoh-analisa-kolerasinya">Berikut contoh Analisa Kolerasinya:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengukuran-jarak">6. Pengukuran Jarak</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity">Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dissimilarity">Dissimilarity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengukuran-jarak-pada-dataset-iris-flowers">7. Pengukuran Jarak pada Dataset Iris Flowers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-dataset-tipe-numerik-iris-flowers">1). Mengukur jarak dataset Tipe Numerik (Iris Flowers)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual">Perhitungan manual</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-python">Perhitungan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-orange">Perhitungan Orange</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-dataset-tipe-data-campuran">2). Mengukur jarak dataset Tipe data campuran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan">Perhitungan</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<section id="sumber-data">
+<h2>1. Sumber Data<a class="headerlink" href="#sumber-data" title="Link to this heading">#</a></h2>
+<p>Dataset yang digunakan adalah Iris Flower Dataset yang diperoleh dari platform Kaggle. Dataset ini merupakan dataset klasik dalam bidang data mining dan machine learning yang berisi data pengukuran bunga iris dari tiga spesies berbeda, yaitu Setosa, Versicolor, dan Virginica. Dataset ini digunakan sebagai studi kasus untuk penerapan metode klasifikasi dalam penambangan data.
+Berikut link dari dataset
+<a class="reference external" href="https://www.kaggle.com/datasets/arshid/iris-flower-dataset?resource=download">Dataset Iris</a></p>
+</section>
+<section id="deskripsi-dataset">
+<h2>2. Deskripsi Dataset<a class="headerlink" href="#deskripsi-dataset" title="Link to this heading">#</a></h2>
+<p>Dataset yang digunakan dalam penelitian ini adalah Iris Flower Dataset yang terdiri dari 150 data dengan 5 atribut. Dataset ini digunakan untuk mengklasifikasikan bunga iris ke dalam tiga spesies berdasarkan ukuran bagian bunganya.</p>
+</section>
+<section id="eksplorasi-dataset">
+<h2>3. Eksplorasi Dataset<a class="headerlink" href="#eksplorasi-dataset" title="Link to this heading">#</a></h2>
+<p>Dalam proses mengidentifikasi dataset ini, python membantu untuk mempermudah pengidentifikasiannya.</p>
+<section id="eksplorasi-dataset-dengan-menggunakan-python">
+<h3>Eksplorasi Dataset dengan menggunakan Python:<a class="headerlink" href="#eksplorasi-dataset-dengan-menggunakan-python" title="Link to this heading">#</a></h3>
+<section id="upload-file-csv">
+<h4>- Upload file CSV<a class="headerlink" href="#upload-file-csv" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Proses upload file CSV dilakukan untuk memasukkan dataset ke dalam lingkungan Google Colaboratory agar dapat diproses menggunakan bahasa pemrograman Python. Dataset diunggah secara manual dari perangkat pengguna menggunakan fungsi files.upload() yang disediakan oleh Google Colab.</p>
+</section>
+<section id="struktur-dataset">
+<h4>- Struktur Dataset<a class="headerlink" href="#struktur-dataset" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Berikut tampilan dari code di atas setelah di jalankan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>index</p></th>
+<th class="head text-left"><p>sepal_length</p></th>
+<th class="head text-left"><p>sepal_width</p></th>
+<th class="head text-left"><p>petal_length</p></th>
+<th class="head text-left"><p>petal_width</p></th>
+<th class="head text-left"><p>species</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>0</p></td>
+<td class="text-left"><p>5.1</p></td>
+<td class="text-left"><p>3.5</p></td>
+<td class="text-left"><p>1.4</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p>4.9</p></td>
+<td class="text-left"><p>3.0</p></td>
+<td class="text-left"><p>1.4</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p>4.7</p></td>
+<td class="text-left"><p>3.2</p></td>
+<td class="text-left"><p>1.3</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p>4.6</p></td>
+<td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p>1.5</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p>5.0</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>1.4</p></td>
+<td class="text-left"><p>0.2</p></td>
+<td class="text-left"><p>Iris-setosa</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Dataset memiliki 5 kolom, yaitu:</p>
+<ol class="arabic simple">
+<li><p>Sepal Length (cm) (Numeric)
+Menunjukkan panjang kelopak luar bunga iris dalam satuan sentimeter.</p></li>
+<li><p>Sepal Width (cm) (Numeric)
+Menunjukkan lebar kelopak luar bunga iris dalam satuan sentimeter.</p></li>
+<li><p>Petal Length (cm) (Numeric)
+Menunjukkan panjang mahkota bunga iris dalam satuan sentimeter.</p></li>
+<li><p>Petal Width (cm) (Numeric)
+Menunjukkan lebar mahkota bunga iris dalam satuan sentimeter.</p></li>
+<li><p>Species (Kategorikal - String)
+Menunjukkan jenis bunga iris, yang terdiri dari tiga kategori:</p>
+<ul class="simple">
+<li><p>Setosa</p></li>
+<li><p>Versicolor</p></li>
+<li><p>Virginica</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="statistik-deskriptif-awal">
+<h4>-Statistik Deskriptif Awal<a class="headerlink" href="#statistik-deskriptif-awal" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Statistik deskriptif digunakan untuk mengetahui gambaran umum data seperti nilai rata-rata, nilai minimum, dan maksimum dari setiap atribut numerik.</p>
+<p>Dataset Iris memiliki 4 atribut numerik, yaitu:</p>
+<ul class="simple">
+<li><p>Sepal Length</p></li>
+<li><p>Sepal Width</p></li>
+<li><p>Petal Length</p></li>
+<li><p>Petal Width</p></li>
+</ul>
+<p>Berikut contoh statistik deskriptifnya:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>index</p></th>
+<th class="head text-left"><p>sepal_length</p></th>
+<th class="head text-left"><p>sepal_width</p></th>
+<th class="head text-left"><p>petal_length</p></th>
+<th class="head text-left"><p>petal_width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>count</p></td>
+<td class="text-left"><p>150.0</p></td>
+<td class="text-left"><p>150.0</p></td>
+<td class="text-left"><p>150.0</p></td>
+<td class="text-left"><p>150.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>mean</p></td>
+<td class="text-left"><p>5.843333333333334</p></td>
+<td class="text-left"><p>3.0540000000000003</p></td>
+<td class="text-left"><p>3.758666666666666</p></td>
+<td class="text-left"><p>1.1986666666666668</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>std</p></td>
+<td class="text-left"><p>0.8280661279778629</p></td>
+<td class="text-left"><p>0.4335943113621737</p></td>
+<td class="text-left"><p>1.7644204199522617</p></td>
+<td class="text-left"><p>0.7631607417008414</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>min</p></td>
+<td class="text-left"><p>4.3</p></td>
+<td class="text-left"><p>2.0</p></td>
+<td class="text-left"><p>1.0</p></td>
+<td class="text-left"><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>25%</p></td>
+<td class="text-left"><p>5.1</p></td>
+<td class="text-left"><p>2.8</p></td>
+<td class="text-left"><p>1.6</p></td>
+<td class="text-left"><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>50%</p></td>
+<td class="text-left"><p>5.8</p></td>
+<td class="text-left"><p>3.0</p></td>
+<td class="text-left"><p>4.35</p></td>
+<td class="text-left"><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>75%</p></td>
+<td class="text-left"><p>6.4</p></td>
+<td class="text-left"><p>3.3</p></td>
+<td class="text-left"><p>5.1</p></td>
+<td class="text-left"><p>1.8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>max</p></td>
+<td class="text-left"><p>7.9</p></td>
+<td class="text-left"><p>4.4</p></td>
+<td class="text-left"><p>6.9</p></td>
+<td class="text-left"><p>2.5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Berdasarkan hasil analisis statistik deskriptif, dataset Iris terdiri dari 150 data pada setiap atribut numerik, sehingga dapat disimpulkan tidak terdapat missing value. Nilai rata-rata (mean) menunjukkan bahwa panjang sepal bunga iris adalah 5.84 cm, lebar sepal 3.05 cm, panjang petal 3.76 cm, dan lebar petal 1.20 cm. Standar deviasi tertinggi terdapat pada atribut petal length sebesar 1.76, yang menunjukkan bahwa variasi panjang petal lebih besar dibandingkan atribut lainnya. Nilai minimum dan maksimum menunjukkan rentang data yang masih dalam batas wajar, yaitu sepal length antara 4.3 hingga 7.9 cm dan petal width antara 0.1 hingga 2.5 cm. Selain itu, nilai kuartil (25%, 50%, dan 75%) menunjukkan distribusi data yang relatif stabil tanpa adanya penyimpangan ekstrem yang signifikan. Secara umum, dataset memiliki distribusi yang baik dan layak digunakan untuk proses analisis dan pemodelan pada tahap selanjutnya.</p>
+</section>
+<section id="pengecekan-data-duplikat">
+<h4>- Pengecekan Data Duplikat<a class="headerlink" href="#pengecekan-data-duplikat" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Code di atas merupakan code untuk pengecekan data duplikat, berikut untuk hasil dari pengecekan data duplikat:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Jadi setelah dilakukan pengecekan, terdapat data duplikat yaitu ada 3 data duplikat.</p>
+</section>
+<section id="pengecekan-data-null">
+<h4>- Pengecekan Data Null<a class="headerlink" href="#pengecekan-data-null" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Berikut untuk tampilan hasil dari pengecekan data Null:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>sepal_length</p></td>
+<td class="text-left"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>sepal_width</p></td>
+<td class="text-left"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>petal_length</p></td>
+<td class="text-left"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>petal_width</p></td>
+<td class="text-left"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>species</p></td>
+<td class="text-left"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="verifikasi-data">
+<h2>4. Verifikasi Data<a class="headerlink" href="#verifikasi-data" title="Link to this heading">#</a></h2>
+<p>Berdasarkan proses verifikasi, dataset Iris terdiri dari 150 data dengan 4 atribut numerik dan 1 atribut kategorikal (species). Hasil pengecekan menunjukkan bahwa seluruh atribut memiliki jumlah data yang sama (count = 150), sehingga dapat disimpulkan tidak terdapat missing value pada dataset. Tipe data juga telah sesuai, di mana atribut sepal length, sepal width, petal length, dan petal width bertipe numerik, sedangkan species bertipe kategorikal. Berdasarkan hasil pengecekan menggunakan Pandas, ditemukan sebanyak 3 data duplikat pada dataset. Keberadaan data duplikat ini tidak menunjukkan kesalahan pada dataset, namun perlu ditangani pada tahap data preparation agar tidak memengaruhi proses pemodelan.</p>
+</section>
+<section id="visualisasi-data">
+<h2>5. Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
+<section id="distribusi-jumlah-data-per-species">
+<h3>- Distribusi Jumlah Data per Species<a class="headerlink" href="#distribusi-jumlah-data-per-species" title="Link to this heading">#</a></h3>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/Gt4lANFXJ1tvApce6vXv0vo4hu08VXJb7_bTkbfgn-M.original.fullsize.png" /></p>
+<p>Grafik bar digunakan untuk melihat jumlah data pada setiap species. Berdasarkan grafik, diketahui bahwa setiap species yaitu Iris-setosa, Iris-versicolor, dan Iris-virginica masing-masing memiliki 50 data. Hal ini menunjukkan bahwa dataset dalam kondisi seimbang (balanced dataset), sehingga tidak terdapat ketimpangan jumlah data antar kelas. Kondisi ini sangat baik untuk proses modeling karena dapat membantu menghasilkan model klasifikasi yang lebih akurat dan tidak bias terhadap kelas tertentu.</p>
+</section>
+<section id="distribusi-data-fitur-numerik-pada-dataset-iris">
+<h3>- Distribusi Data Fitur Numerik pada Dataset Iris<a class="headerlink" href="#distribusi-data-fitur-numerik-pada-dataset-iris" title="Link to this heading">#</a></h3>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/6u595jYczu5oHxd1yDMvEGkfvzQYsyvFrhOICQnLnGY.original.fullsize.png" /></p>
+<p>Berdasarkan histogram, dapat disimpulkan bahwa seluruh fitur numerik memiliki distribusi yang bervariasi dan tidak terdapat anomali yang ekstrem. Fitur petal_length dan petal_width menunjukkan pola distribusi yang lebih jelas dalam membedakan kelompok data, sehingga kedua fitur ini sangat berpotensi menjadi fitur penting dalam proses klasifikasi pada tahap modeling. Visualisasi ini membantu dalam memahami karakteristik dan penyebaran data pada tahap Data Understanding dalam metodologi CRISP-DM.</p>
+</section>
+<section id="analisis-penyebaran-data-dan-deteksi-outlier-menggunakan-boxplot">
+<h3>- Analisis Penyebaran Data dan Deteksi Outlier Menggunakan Boxplot<a class="headerlink" href="#analisis-penyebaran-data-dan-deteksi-outlier-menggunakan-boxplot" title="Link to this heading">#</a></h3>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/YfGQj5-WjGnpPQF6mWpdtoRSXTPrJIw5sXZ6l769Xo0.original.fullsize.png" /></p>
+<p>Berdasarkan boxplot, dapat disimpulkan bahwa setiap fitur memiliki penyebaran data yang berbeda. Fitur sepal_width menunjukkan adanya beberapa outlier, sedangkan fitur lainnya memiliki distribusi yang relatif normal tanpa outlier yang signifikan. Fitur petal_length dan petal_width memiliki variasi data yang cukup besar, sehingga berpotensi menjadi fitur penting dalam membedakan species pada tahap modeling. Visualisasi boxplot ini membantu dalam memahami distribusi data dan mendeteksi outlier pada tahap Data Understanding dalam metodologi CRISP-DM.</p>
+</section>
+<section id="analisa-korelasi">
+<h3>- Analisa Korelasi<a class="headerlink" href="#analisa-korelasi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Analisis korelasi sepal length dan sepal width:</p></li>
+</ul>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/sRKmyd2sVULbo8caUWfLT9eqt_lCk_W0yBKY_EifcEA.original.fullsize.png" /></p>
+<p>Analisis korelasi juga dilakukan pada atribut sepal length dan sepal width menggunakan scatter plot dengan bantuan Python. Berdasarkan hasil visualisasi, terlihat bahwa sebaran data tidak membentuk pola yang jelas, yang menunjukkan bahwa hubungan antara kedua atribut tersebut relatif lemah dibandingkan dengan atribut pada bagian petal.</p>
+<ul class="simple">
+<li><p>Analisis korelasi petal length dan petal width</p></li>
+</ul>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/8bCKkvYBfRcBPq1RZkXrOMc8sxvl-fqDQ-RhbE9lwRo.original.fullsize.png" /></p>
+<p>Analisis korelasi dilakukan secara visual menggunakan scatter plot dengan bantuan bahasa pemrograman Python. Scatter plot digunakan untuk melihat hubungan antara atribut petal length dan petal width. Berdasarkan hasil visualisasi, terlihat bahwa titik-titik data membentuk pola yang jelas, yang menunjukkan adanya hubungan atau korelasi yang kuat antara kedua atribut tersebut.</p>
+</section>
+</section>
+<section id="eksplorasi-dataset-dengan-menggunakan-aplikasi-orange">
+<h2>Eksplorasi Dataset dengan menggunakan Aplikasi Orange:<a class="headerlink" href="#eksplorasi-dataset-dengan-menggunakan-aplikasi-orange" title="Link to this heading">#</a></h2>
+<section id="statistik-deskriptif">
+<h3>- Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h3>
+<p>Statistik deskriptif digunakan untuk memahami karakteristik dasar dataset Iris Flower. Analisis ini dilakukan menggunakan Column Statistics pada aplikasi Orange Data Mining. Hasil statistik deskriptif menunjukkan nilai minimum, maksimum, rata-rata, dan standar deviasi dari setiap atribut, sehingga memberikan gambaran umum mengenai sebaran dan variasi data.</p>
+<p>Berikut contoh statistik deskriptifnya:</p>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/1QfYry6Ge2WhH-6mPvVdIRTrstVxnt-bPx3SCKn8EtY.original.fullsize.png" /></p>
+</section>
+<section id="analisa-kolerasi">
+<h3>- Analisa kolerasi<a class="headerlink" href="#analisa-kolerasi" title="Link to this heading">#</a></h3>
+<p>Analisis korelasi antar atribut dilakukan secara visual menggunakan widget Scatter Plot pada aplikasi Orange Data Mining. Scatter Plot digunakan untuk melihat hubungan antara dua atribut numerik berdasarkan pola sebaran data. Berdasarkan hasil visualisasi, terlihat bahwa beberapa atribut, khususnya pada bagian petal, memiliki hubungan yang kuat, sedangkan atribut lainnya menunjukkan hubungan yang lebih lemah. Analisis ini membantu dalam memahami keterkaitan antar atribut sebelum masuk ke tahap pemodelan.</p>
+</section>
+<section id="berikut-contoh-analisa-kolerasinya">
+<h3>Berikut contoh Analisa Kolerasinya:<a class="headerlink" href="#berikut-contoh-analisa-kolerasinya" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Analisis korelasi sepal length dan sepal width:</p></li>
+</ul>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/iaM0IQD8x8ELhZrhLL7d07iobX8siwpqS55Ud7nF7uA.original.fullsize.png" /></p>
+<p>Berdasarkan hasil visualisasi scatter plot antara sepal length dan sepal width, terlihat bahwa titik-titik data tersebar secara acak dan tidak membentuk pola linear yang jelas. Hal ini menunjukkan bahwa hubungan antara kedua atribut tersebut relatif lemah. Dengan kata lain, perubahan nilai sepal length tidak secara konsisten diikuti oleh perubahan sepal width.</p>
+<ul class="simple">
+<li><p>Analisis korelasi petal length dan petal width</p></li>
+</ul>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/iT4Xj8fRcAwT4AI_oDVDJKNmDaNI3cv0BFxkJoB2VBw.original.fullsize.png" /></p>
+<p>Berbeda dengan atribut sepal, scatter plot antara petal length dan petal width menunjukkan pola sebaran yang lebih teratur dan cenderung membentuk hubungan linear positif. Titik-titik data terlihat mengikuti arah tertentu, yang menandakan adanya korelasi yang kuat antara kedua atribut petal tersebut.</p>
+</section>
+</section>
+<section id="pengukuran-jarak">
+<h2>6. Pengukuran Jarak<a class="headerlink" href="#pengukuran-jarak" title="Link to this heading">#</a></h2>
+<section id="similarity">
+<h3>Similarity<a class="headerlink" href="#similarity" title="Link to this heading">#</a></h3>
+<p>Similarity adalah ukuran numerik yang menunjukkan tingkat kemiripan antara dua objek berdasarkan fitur yang mereka miliki. Secara umum, nilai similarity biasanya berada di rentang 0 sampai 1</p>
+<ul class="simple">
+<li><p>0 -&gt; tidak mirip sama sekali</p></li>
+<li><p>1 -&gt; sangat mirip / identik</p></li>
+</ul>
+<p>Semakin besar nilainya → semakin mirip.</p>
+</section>
+<section id="dissimilarity">
+<h3>Dissimilarity<a class="headerlink" href="#dissimilarity" title="Link to this heading">#</a></h3>
+<p>Dissimilarity adalah ukuran numerik yang menunjukkan seberapa berbeda dua objek/data.</p>
+<ul class="simple">
+<li><p>Semakin besar nilai dissimilarity -&gt; semakin berbeda kedua objek tersebut.</p></li>
+<li><p>Semakin kecil nilainya -&gt; semakin mirip.</p></li>
+</ul>
+<p>Dalam data numerik, dissimilarity biasanya direpresentasikan dalam bentuk distance (jarak) di dalam ruang fitur (feature space). Secara umum dapat ditulis sebagai: $<span class="math notranslate nohighlight">\(
+d(x,y)
+\)</span>$ yang berarti jarak antara objek 𝑥 dan 𝑦.</p>
+<p>Untuk data bertipe numerik (misalnya tinggi, berat, nilai, umur), dissimilarity dihitung menggunakan metode berbasis jarak matematis.
+Tiga metode yang paling umum digunakan adalah:</p>
+<ol class="arabic simple">
+<li><p>Minkowski Distance</p></li>
+</ol>
+<p>Minkowski Distance adalah bentuk umum dari pengukuran jarak dalam ruang berdimensi. Rumusnya:
+$<span class="math notranslate nohighlight">\(d(2,1) = \sqrt{(1{,}9 - 5{,}1)^2 + (3{,}3 - 3{,}5)^2 + (1{,}4 - 1{,}4)^2 + (0{,}2 - 0{,}2)^2}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ = \sqrt{0{,}04 + 0{,}04 + 0 + 0{,}25} \]</div>
+<div class="math notranslate nohighlight">
+\[ = 0{,}538 \]</div>
+<div class="math notranslate nohighlight">
+\[d(3,1) = \sqrt{(4{,}7 - 5{,}1)^2 + (3{,}2 - 3{,}5)^2 + (1{,}3 - 1{,}4)^2 + (0{,}2 - 0{,}2)^2}\]</div>
+<div class="math notranslate nohighlight">
+\[= \sqrt{0{,}16 + 0{,}09 + 0{,}01 + 0}\]</div>
+<div class="math notranslate nohighlight">
+\[= 0{,}50990\]</div>
+<p>Keterangan:</p>
+<p>𝑥𝑖 dan 𝑦𝑖 = nilai atribut ke-i</p>
+<p>𝑝 = parameter yang menentukan jenis jarak</p>
+<p>𝑛 = jumlah atribut</p>
+<p>Minkowski disebut sebagai bentuk umum karena ketika nilai p diubah, maka akan menghasilkan metode jarak yang berbeda.</p>
+<ol class="arabic simple" start="2">
+<li><p>Manhattan Distance</p></li>
+</ol>
+<p>Manhattan Distance adalah metode pengukuran jarak yang digunakan untuk menghitung tingkat perbedaan (dissimilarity) antara dua objek dengan menjumlahkan selisih absolut dari setiap atributnya.
+Metode ini menghitung jarak berdasarkan jalur horizontal dan vertikal (seperti pola jalan berbentuk grid), bukan garis lurus. Semakin besar nilai Manhattan Distance, maka semakin besar perbedaan antar objek. Nilai minimum jaraknya adalah 0, yang menunjukkan bahwa dua objek identik.</p>
+<div class="math notranslate nohighlight">
+\[d(i,j) = {|x_{i1} - x_{j1}|+| x_{i2} - x_{j2}|^2 + \ldots + |x_{ip} - x_{jp}|}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Euclidean Distance</p></li>
+</ol>
+<p>Euclidean Distance merupakan salah satu metode pengukuran jarak yang termasuk dalam kategori dissimilarity, karena metode ini mengukur tingkat perbedaan antara dua objek berdasarkan nilai atribut numeriknya. Semakin besar hasil perhitungan Euclidean Distance, maka semakin besar perbedaan (dissimilarity) antara dua objek tersebut. Sebaliknya, jika hasilnya mendekati 0, maka kedua objek semakin mirip.</p>
+<div class="math notranslate nohighlight">
+\[d(i,j) = \sqrt{(x_{i1} - x_{j1}|^2 +| x_{i2} - x_{j2}|^2 + \ldots + |x_{ip} - x_{jp}|^2})\]</div>
+<p>Jaccard Dissimilarity adalah ukuran untuk menghitung tingkat perbedaan antara dua objek pada data biner (0 dan 1) yang bersifat tidak simetris.
+Tidak simetris artinya:</p>
+<ul class="simple">
+<li><p>Nilai 1 (kehadiran / ya) lebih penting.</p></li>
+<li><p>Nilai 0 (ketidakhadiran / tidak) tidak dianggap penting.</p></li>
+<li><p>Pasangan 0–0 diabaikan.</p></li>
+</ul>
+<p>Metode ini banyak digunakan dalam:</p>
+<ul class="simple">
+<li><p>Market basket analysis.</p></li>
+<li><p>Data transaksi.</p></li>
+<li><p>Clustering data biner.</p></li>
+<li><p>Analisis kemunculan fitur.</p></li>
+</ul>
+</section>
+</section>
+<section id="pengukuran-jarak-pada-dataset-iris-flowers">
+<h2>7. Pengukuran Jarak pada Dataset Iris Flowers<a class="headerlink" href="#pengukuran-jarak-pada-dataset-iris-flowers" title="Link to this heading">#</a></h2>
+<section id="mengukur-jarak-dataset-tipe-numerik-iris-flowers">
+<h3>1). Mengukur jarak dataset Tipe Numerik (Iris Flowers)<a class="headerlink" href="#mengukur-jarak-dataset-tipe-numerik-iris-flowers" title="Link to this heading">#</a></h3>
+<p>Pada dataset Iris diatas, tipe data yang dimiliki adalah bernilai numerik, karena hal itu penghitungan jarak untuk tipe data Iris kali ini akan digunakan metode Eucledian Distance</p>
+<section id="perhitungan-manual">
+<h4>Perhitungan manual<a class="headerlink" href="#perhitungan-manual" title="Link to this heading">#</a></h4>
+<p>Contoh perhitungan secara manual pada baris 2 dan 3 dengan kolom 1:
+$<span class="math notranslate nohighlight">\(
+d(2,1) = \sqrt{(|4{,}9 - 5{,}1|^2 + |3 - 3{,}5|^2 + |1{,}4 - 1{,}4|^2 + |0{,}2 - 0{,}2|^2)}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= \sqrt{0{,}04 + 0{,}25}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= 0{,}538
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+d(3,1) = \sqrt{(|4{,}7 - 5{,}1|^2 + |3{,}2 - 3{,}5|^2 + |1{,}3 - 1{,}4|^2 + |0{,}2 - 0{,}2|^2)}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+= \sqrt{0{,}16 + 0{,}09 + 0{,}01 + 0}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+= 0{,}50990
+\]</div>
+</section>
+<section id="perhitungan-python">
+<h4>Perhitungan Python<a class="headerlink" href="#perhitungan-python" title="Link to this heading">#</a></h4>
+<p>Kita juga dapat menggunakan tools seperti python untuk mempermudah perhitungan ini</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">pdist</span><span class="p">,</span> <span class="n">squareform</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">squareform</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+
+<span class="n">distance_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">distance_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Terdapat tambahan library yang digunakan yaitu library scipy untuk mempermudah kita menghitung Euclidean Distance tanpa perlu coding manual. Selanjutnya data ditampilkan hanya sebesar 5x5 dihitung dari yang pertama</p>
+<p>Output yang dihasilkan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0.000000</p></td>
+<td><p>0.538516</p></td>
+<td><p>0.509902</p></td>
+<td><p>0.648074</p></td>
+<td><p>0.141421</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0.538516</p></td>
+<td><p>0.000000</p></td>
+<td><p>0.300000</p></td>
+<td><p>0.331662</p></td>
+<td><p>0.608276</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0.509902</p></td>
+<td><p>0.300000</p></td>
+<td><p>0.000000</p></td>
+<td><p>0.244949</p></td>
+<td><p>0.509902</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0.648074</p></td>
+<td><p>0.331662</p></td>
+<td><p>0.244949</p></td>
+<td><p>0.000000</p></td>
+<td><p>0.648074</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0.141421</p></td>
+<td><p>0.608276</p></td>
+<td><p>0.509902</p></td>
+<td><p>0.648074</p></td>
+<td><p>0.000000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="perhitungan-orange">
+<h4>Perhitungan Orange<a class="headerlink" href="#perhitungan-orange" title="Link to this heading">#</a></h4>
+<p><img alt="original image" src="https://cdn.mathpix.com/snip/images/9PGgc7ny0uksXf9OeJWUUqJ1W74_wYqqPmGLGPGhBL8.original.fullsize.png" />
+3 perhitungan diatas, memiliki kesamaan nilai, artinya perhitungan yang dilakukan sudah dilakukan secara benar dan urut</p>
+</section>
+</section>
+<section id="mengukur-jarak-dataset-tipe-data-campuran">
+<h3>2). Mengukur jarak dataset Tipe data campuran<a class="headerlink" href="#mengukur-jarak-dataset-tipe-data-campuran" title="Link to this heading">#</a></h3>
+</section>
+<section id="perhitungan">
+<h3>Perhitungan<a class="headerlink" href="#perhitungan" title="Link to this heading">#</a></h3>
+<p>Perhitungan manual antara baris 1 dan 2, lalu baris 1 dan 3: Untuk menghitung jarak pada data campuran, kita perlu menghitungnya pada masing-masing tipe data yang kemudian hasil akhirnya dijumlahkan. Dataset yang digunakan bersumser dari kaggle (<a class="reference external" href="https://www.kaggle.com/datasets/spscientist/students-performance-in-exams">https://www.kaggle.com/datasets/spscientist/students-performance-in-exams</a>).</p>
+<ol class="arabic simple">
+<li><p>Ordinal dan Numerik Pada kolom parental level of education merupakan fitur dengan tipe ordinal. Pada tipe data ordinal ini sebelum dapat menghitung jarak pada baris 1 dan 2, lalu baris 1 dan 3 perlu melakukan normalisasi, yang setelah dinormalisasi nanti dapat dihitung jaraknya dengan tipe data numerik menggunakan metode Eucledien Distance.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Some high school = 1</p></li>
+<li><p>High school = 2</p></li>
+<li><p>Some collage = 3</p></li>
+<li><p>Associate’s degree = 4</p></li>
+<li><p>Bachelor’s degree = 5</p></li>
+<li><p>Master’s degree = 6</p></li>
+</ul>
+<p>Proses Normalisasi pada tiap tingkatan:
+Normalisasi = r - min / max - min</p>
+<div class="math notranslate nohighlight">
+\[
+1 = \frac{1-1}{6-1} = \frac{0}{5} = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+2 = \frac{2-1}{6-1} = \frac{1}{5} = 0.2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+3 = \frac{3-1}{6-1} = \frac{2}{5} = 0.4
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+4 = \frac{4-1}{6-1} = \frac{3}{5} = 0.6
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+5 = \frac{5-1}{6-1} = \frac{4}{5} = 0.8
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+6 = \frac{6-1}{6-1} = \frac{5}{5} = 1
+\]</div>
+<p>Setelah dilakukan normalisasi pada tipe data ordinal, selanjutnya ada proses perhitungan menggunakan metode Eucledien Distance, yang dihitung dengan tipe data numerik yaitu pada kolom Math Score, Reading Score dan Writing Score.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parental Level of Education</p></th>
+<th class="head"><p>Math Score</p></th>
+<th class="head"><p>Reading Score</p></th>
+<th class="head"><p>Writing Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.6</p></td>
+<td><p>72</p></td>
+<td><p>72</p></td>
+<td><p>74</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.4</p></td>
+<td><p>69</p></td>
+<td><p>90</p></td>
+<td><p>88</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>90</p></td>
+<td><p>95</p></td>
+<td><p>93</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.6</p></td>
+<td><p>47</p></td>
+<td><p>57</p></td>
+<td><p>44</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+d(1,2) &amp;= \sqrt{(0.6-0.4)^2 + (72-69)^2 + (72-90)^2 + (74-88)^2} \\
+       &amp;= \sqrt{0.04 + 9 + 324 + 196} \\
+       &amp;= \sqrt{529.04} \\
+       &amp;= 23.00086
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+d(1,3) &amp;= \sqrt{(0.6-1)^2 + (72-90)^2 + (72-95)^2 + (74-93)^2} \\
+       &amp;= \sqrt{0.16 + 324 + 529 + 361} \\
+       &amp;= \sqrt{1214.16} \\
+       &amp;= 34.844
+\end{aligned}
+\end{split}\]</div>
+<p>Jadi jarak pada tipe data ordinal dan numerik pada d(1,2) = 23.00086 dan pada d(1,3)= 34.844 2. Binary Perhitungan jarak pada tipe data biner kita perlu menentukan simetris dan asimetrisnya terlebih dahulu, karena untuk perhitungan jarak yang simteris dan asimetris berbeda. Pada data campuran yang sekarang kita pake untuk yang tipe binary ada 3 fitur yaitu fitur gender yang simetris, lunch dan test preparation course yang asimetris.</p>
+<p>a. d(1,2)</p>
+<ul class="simple">
+<li><p>Simetris
+q = 0, r = 0, s = 0, t = 1</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d = \frac{r+s}{q+r+s+t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d = \frac{0+0}{0+0+0+1}
+= 0
+\]</div>
+<ul class="simple">
+<li><p>Asimetris
+q = 1, r = 0, s = 1, t = 0
+$<span class="math notranslate nohighlight">\(
+d = \frac{r+s}{q+r+s}
+\)</span>$</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d = \frac{0+1}{1+0+1} = 0.5
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d(1,2) = 0 + 0.5 = 0.5
+</pre></div>
+</div>
+<p>b. d(1,3)</p>
+<ul class="simple">
+<li><p>Simetris
+q = 0, r = 0, s = 0, t = 1</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d = \frac{r+s}{q+r+s+t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d = \frac{0+0}{0+0+0+1}
+= 0
+\]</div>
+<ul class="simple">
+<li><p>Asimetris
+q = 1, r = 0, s = 1, t = 1
+$<span class="math notranslate nohighlight">\(
+d = \frac{r+s}{q+r+s}
+\)</span>$</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d = \frac{0+0}{1+0+0} = 0
+\]</div>
+<p>d(1,2) = 0 + 0 = 0</p>
+<p>Jadi, jarak pada tipe data binary pada d(1,2) = 0.5 dan d(1,3) = 0.</p>
+<ol class="arabic simple" start="3">
+<li><p>Kategori Pada tipe data kategori menggunakan rumus p-m/p, dimana p adalah banyaknya fitur dan m adalah jumlah kategori apabila antara kategori data ke-1 dan ke-2 sama maka satu, dan apabila berbeda maka 0.</p></li>
+</ol>
+<p>d(1,2) = 1-0/1 = 1/1 = 1</p>
+<p>d(1,3) = 1-1/1 = 0/1 = 0</p>
+<p>Jadi, jarak tipe data kategori pada d(1,2) = 1 dan d(1,3) = 0</p>
+<p>Untuk menentukan hasil akhirnya, yaitu jarak d(1,2) dan d(1,3) adalah dengan menjumlahkan hasil hitung jarak dari masing-masing tipe data di atas.</p>
+<p>d(1,2) = 23,00086 + 0,5 + 1 = 24,50086</p>
+<p>d(1,3) = 34,844 + 0 + 0 = 34,844.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="business-understanding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Business Understanding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data-preparation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Preparation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">1. Sumber Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">2. Deskripsi Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset">3. Eksplorasi Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-dengan-menggunakan-python">Eksplorasi Dataset dengan menggunakan Python:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-file-csv">- Upload file CSV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">- Struktur Dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-awal">-Statistik Deskriptif Awal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengecekan-data-duplikat">- Pengecekan Data Duplikat</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengecekan-data-null">- Pengecekan Data Null</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data">4. Verifikasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">5. Visualisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-jumlah-data-per-species">- Distribusi Jumlah Data per Species</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-data-fitur-numerik-pada-dataset-iris">- Distribusi Data Fitur Numerik pada Dataset Iris</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-penyebaran-data-dan-deteksi-outlier-menggunakan-boxplot">- Analisis Penyebaran Data dan Deteksi Outlier Menggunakan Boxplot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisa-korelasi">- Analisa Korelasi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-dengan-menggunakan-aplikasi-orange">Eksplorasi Dataset dengan menggunakan Aplikasi Orange:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">- Statistik Deskriptif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisa-kolerasi">- Analisa kolerasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#berikut-contoh-analisa-kolerasinya">Berikut contoh Analisa Kolerasinya:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengukuran-jarak">6. Pengukuran Jarak</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity">Similarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dissimilarity">Dissimilarity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengukuran-jarak-pada-dataset-iris-flowers">7. Pengukuran Jarak pada Dataset Iris Flowers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-dataset-tipe-numerik-iris-flowers">1). Mengukur jarak dataset Tipe Numerik (Iris Flowers)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual">Perhitungan manual</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-python">Perhitungan Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-orange">Perhitungan Orange</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-dataset-tipe-data-campuran">2). Mengukur jarak dataset Tipe data campuran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan">Perhitungan</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fitria Cahaya Kurnia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
