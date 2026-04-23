@@ -179,6 +179,7 @@ Data ID 001 dan Data ID 003 memiliki nilai atribut yang sama persis, sehingga di
 
 #### 4. Transformasi Data Kategorikal
 Pada dataset terdapat atribut Tekstur Tanah yang bertipe kategorikal. Karena algoritma KNN hanya dapat memproses data numerik, maka atribut tersebut diubah menjadi bentuk numerik menggunakan node One to Many dengan metode one-hot encoding.
+
 **Contoh Sebelum Transformasi**
 | ID | Tekstur Tanah |
 | -- | ------------- |
@@ -187,13 +188,16 @@ Pada dataset terdapat atribut Tekstur Tanah yang bertipe kategorikal. Karena alg
 | 3  | Liat          |
 | 4  | Lempung       |
 Karena masih berupa teks, data ini belum bisa diproses oleh KNN.
+
 **Setelah Menggunakan One-Hot Encoding**
+
 | ID | Lempung | Pasir | Liat |
 | -- | ------: | ----: | ---: |
 | 1  |       1 |     0 |    0 |
 | 2  |       0 |     1 |    0 |
 | 3  |       0 |     0 |    1 |
 | 4  |       1 |     0 |    0 |
+
 Penjelasan:
 - jika data = Lempung → kolom Lempung bernilai 1
 - jika data = Pasir → kolom Pasir bernilai 1

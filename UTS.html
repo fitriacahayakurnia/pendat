@@ -635,8 +635,8 @@ Data ID 001 dan Data ID 003 memiliki nilai atribut yang sama persis, sehingga di
 </section>
 <section id="transformasi-data-kategorikal">
 <h4>4. Transformasi Data Kategorikal<a class="headerlink" href="#transformasi-data-kategorikal" title="Link to this heading">#</a></h4>
-<p>Pada dataset terdapat atribut Tekstur Tanah yang bertipe kategorikal. Karena algoritma KNN hanya dapat memproses data numerik, maka atribut tersebut diubah menjadi bentuk numerik menggunakan node One to Many dengan metode one-hot encoding.
-<strong>Contoh Sebelum Transformasi</strong></p>
+<p>Pada dataset terdapat atribut Tekstur Tanah yang bertipe kategorikal. Karena algoritma KNN hanya dapat memproses data numerik, maka atribut tersebut diubah menjadi bentuk numerik menggunakan node One to Many dengan metode one-hot encoding.</p>
+<p><strong>Contoh Sebelum Transformasi</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>ID</p></th>
@@ -659,33 +659,43 @@ Data ID 001 dan Data ID 003 memiliki nilai atribut yang sama persis, sehingga di
 <tr class="row-even"><td><p>Karena masih berupa teks, data ini belum bisa diproses oleh KNN.</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Setelah Menggunakan One-Hot Encoding</strong></p></td>
-<td><p></p></td>
+</tbody>
+</table>
+</div>
+<p><strong>Setelah Menggunakan One-Hot Encoding</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head text-right"><p>Lempung</p></th>
+<th class="head text-right"><p>Pasir</p></th>
+<th class="head text-right"><p>Liat</p></th>
 </tr>
-<tr class="row-even"><td><p>ID</p></td>
-<td><p>Lempung</p></td>
-</tr>
-<tr class="row-odd"><td><p>–</p></td>
-<td><p>——:</p></td>
-</tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p>1</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p>Penjelasan:</p></td>
-<td><p></p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Penjelasan:</p>
 <ul class="simple">
 <li><p>jika data = Lempung → kolom Lempung bernilai 1</p></li>
 <li><p>jika data = Pasir → kolom Pasir bernilai 1</p></li>
