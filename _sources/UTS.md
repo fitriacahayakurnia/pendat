@@ -187,6 +187,7 @@ Pada dataset terdapat atribut Tekstur Tanah yang bertipe kategorikal. Karena alg
 | 2  | Pasir         |
 | 3  | Liat          |
 | 4  | Lempung       |
+
 Karena masih berupa teks, data ini belum bisa diproses oleh KNN.
 
 **Setelah Menggunakan One-Hot Encoding**
