@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analisis Skforecast Explainability &#8212; Fitria&#39;s Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'analisis-skforecast-explainability';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Prediksi Kadar Nitrogen Dioksida (NO₂) di Kota Probolinggo Menggunakan Algoritma K-Nearest Neighbor (KNN)" href="prediksi-no2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fitri.jpeg" class="logo__image only-light" alt="Fitria's Notes - Home"/>
+    <img src="_static/fitri.jpeg" class="logo__image only-dark pst-js-only" alt="Fitria's Notes - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    240411100192 Fitria Cahaya Kurnia
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business-understanding.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-understanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-preparation.html">Data Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imputasi-missing-value.html">Imputasi Missing Value dan Materi Normalisasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html">UTS | Analisa Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naive-bayess.html">Analisis Data Menggunakan Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision-tree.html">Implementasi Decision Tree Menggunakan KNIME pada Dataset Heart Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random-forest.html">Implementasi Rendom Forest Menggunakan Script Python pada KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Analisis Data Menggunakan Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prediksi-no2.html">Prediksi Kadar Nitrogen Dioksida (NO₂) di Kota Probolinggo Menggunakan Algoritma K-Nearest Neighbor (KNN)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis Skforecast Explainability</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fanalisis-skforecast-explainability.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/analisis-skforecast-explainability.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analisis Skforecast Explainability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-permintaan-listrik-victoria-australia">Prediksi Permintaan Listrik Victoria, Australia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-prediksi-tentang-apa">1. Analisis Prediksi Tentang Apa?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-data-training-input-dan-output">2. Bentuk Data Training (Input dan Output)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lag">3. Apa Itu Lag?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-matematis">Definisi matematis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-lags-7">Mengapa lags=7?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analogi-sederhana">Analogi sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-analisis-yang-dilakukan">4. Proses Analisis yang Dilakukan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-persiapan-data">Tahap 1 — Persiapan Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-membangun-dan-melatih-model">Tahap 2 — Membangun dan Melatih Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-feature-importance-lightgbm-bawaan">Tahap 3 — Feature Importance (LightGBM Bawaan)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-shap-values">Tahap 4 — SHAP Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-prediksi-10-hari-ke-depan">Tahap 5 — Prediksi 10 Hari ke Depan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-permutation-importance">Tahap 6 — Permutation Importance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-7-partial-dependence-plot-pdp">Tahap 7 — Partial Dependence Plot (PDP)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-skforecast-explainability">
+<h1>Analisis Skforecast Explainability<a class="headerlink" href="#analisis-skforecast-explainability" title="Link to this heading">#</a></h1>
+<section id="prediksi-permintaan-listrik-victoria-australia">
+<h2>Prediksi Permintaan Listrik Victoria, Australia<a class="headerlink" href="#prediksi-permintaan-listrik-victoria-australia" title="Link to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="analisis-prediksi-tentang-apa">
+<h2>1. Analisis Prediksi Tentang Apa?<a class="headerlink" href="#analisis-prediksi-tentang-apa" title="Link to this heading">#</a></h2>
+<p>Model memprediksi <strong>total konsumsi energi listrik harian (Electricity Demand)</strong> di negara bagian <strong>Victoria, Australia</strong>, dalam satuan <strong>Megawatt (MW)</strong>.</p>
+<p>Dataset aslinya (<code class="docutils literal notranslate"><span class="pre">vic_electricity</span></code>) berisi data per <strong>30 menit</strong> dengan 52.608 baris, kemudian diagregasi menjadi <strong>data harian</strong> menggunakan <code class="docutils literal notranslate"><span class="pre">resample('D')</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Demand</span></code> → dijumlah per hari (<code class="docutils literal notranslate"><span class="pre">sum</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Temperature</span></code> → dirata-rata per hari (<code class="docutils literal notranslate"><span class="pre">mean</span></code>)</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Info</p></th>
+<th class="head text-left"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Total data asli</p></td>
+<td class="text-left"><p>52.608 baris (interval 30 menit)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Setelah resample</p></td>
+<td class="text-left"><p>1.097 hari (2012–2014)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Data training</p></td>
+<td class="text-left"><p>s.d. 21 Desember 2014 (1.087 hari)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Data testing</p></td>
+<td class="text-left"><p>22–31 Desember 2014 (10 hari)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Target prediksi</p></td>
+<td class="text-left"><p>10 hari ke depan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="bentuk-data-training-input-dan-output">
+<h2>2. Bentuk Data Training (Input dan Output)<a class="headerlink" href="#bentuk-data-training-input-dan-output" title="Link to this heading">#</a></h2>
+<p>Model menggunakan <code class="docutils literal notranslate"><span class="pre">ForecasterRecursive</span></code> dengan <code class="docutils literal notranslate"><span class="pre">lags=7</span></code> dan variabel eksogen <code class="docutils literal notranslate"><span class="pre">Temperature</span></code>. Matriks training yang terbentuk adalah:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Kolom</p></th>
+<th class="head text-left"><p>Peran</p></th>
+<th class="head text-left"><p>Tipe</p></th>
+<th class="head text-left"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_1</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand 1 hari sebelumnya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_2</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand 2 hari sebelumnya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_3</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand 3 hari sebelumnya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_4</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand 4 hari sebelumnya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_5</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand 5 hari sebelumnya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_6</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand 6 hari sebelumnya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">lag_7</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Fitur lag</p></td>
+<td class="text-left"><p>Demand seminggu lalu</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Temperature</span></code></p></td>
+<td class="text-left"><p>INPUT</p></td>
+<td class="text-left"><p>Eksogen</p></td>
+<td class="text-left"><p>Suhu rata-rata harian Victoria (°C)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">(Demand)</span></code></p></td>
+<td class="text-left"><p><strong>OUTPUT</strong></p></td>
+<td class="text-left"><p>Target</p></td>
+<td class="text-left"><p>Total demand listrik hari yang diprediksi (MW)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Contoh 1 baris X_train:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lag_1=205.338 | lag_2=211.066 | lag_3=213.792 | lag_4=258.955
+lag_5=275.490 | lag_6=227.778 | lag_7=82.531  | Temp=24.1
+→ y = 200.693 MW
+</pre></div>
+</div>
+<p>Artinya: <strong>8 kolom input → 1 nilai output</strong> per baris data training.</p>
+</section>
+<section id="apa-itu-lag">
+<h2>3. Apa Itu Lag?<a class="headerlink" href="#apa-itu-lag" title="Link to this heading">#</a></h2>
+<p><strong>Lag</strong> adalah nilai dari deret waktu (time series) pada <strong>waktu sebelumnya</strong>, yang digunakan sebagai fitur (input) untuk memprediksi nilai saat ini.</p>
+<section id="definisi-matematis">
+<h3>Definisi matematis<a class="headerlink" href="#definisi-matematis" title="Link to this heading">#</a></h3>
+<p>Jika <code class="docutils literal notranslate"><span class="pre">y(t)</span></code> = demand hari ke-t, maka:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lag_1 = y(t-1)  ← demand kemarin
+lag_2 = y(t-2)  ← demand 2 hari lalu
+lag_3 = y(t-3)  ← demand 3 hari lalu
+...
+lag_7 = y(t-7)  ← demand seminggu lalu
+</pre></div>
+</div>
+</section>
+<section id="mengapa-lags-7">
+<h3>Mengapa lags=7?<a class="headerlink" href="#mengapa-lags-7" title="Link to this heading">#</a></h3>
+<p>Dengan <code class="docutils literal notranslate"><span class="pre">lags=7</span></code>, model diberi <strong>“memori” satu minggu penuh</strong>. Ini penting karena:</p>
+<ul class="simple">
+<li><p>Konsumsi listrik berpola <strong>mingguan</strong> (hari kerja vs akhir pekan berbeda)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_7</span></code> menangkap pola yang sama dari minggu lalu di hari yang sama</p></li>
+<li><p>Model bisa “tahu” apakah hari ini adalah hari kerja atau libur, secara implisit dari pola historis</p></li>
+</ul>
+</section>
+<section id="analogi-sederhana">
+<h3>Analogi sederhana<a class="headerlink" href="#analogi-sederhana" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Untuk memprediksi listrik yang dipakai <em>hari ini</em>, kita gunakan data listrik yang dipakai <em>kemarin, 2 hari lalu, …, hingga 7 hari lalu</em> sebagai petunjuk — ditambah informasi suhu udara hari ini.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="proses-analisis-yang-dilakukan">
+<h2>4. Proses Analisis yang Dilakukan<a class="headerlink" href="#proses-analisis-yang-dilakukan" title="Link to this heading">#</a></h2>
+<p>Analisis dilakukan dalam <strong>7 tahap utama</strong>:</p>
+<section id="tahap-1-persiapan-data">
+<h3>Tahap 1 — Persiapan Data<a class="headerlink" href="#tahap-1-persiapan-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Download dataset <code class="docutils literal notranslate"><span class="pre">vic_electricity</span></code> dari skforecast datasets</p></li>
+<li><p>Resample dari interval 30 menit → harian (<code class="docutils literal notranslate"><span class="pre">resample('D')</span></code>)</p></li>
+<li><p>Split data: training (2012–21 Des 2014) dan testing (22–31 Des 2014)</p></li>
+</ul>
+</section>
+<section id="tahap-2-membangun-dan-melatih-model">
+<h3>Tahap 2 — Membangun dan Melatih Model<a class="headerlink" href="#tahap-2-membangun-dan-melatih-model" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Buat <code class="docutils literal notranslate"><span class="pre">ForecasterRecursive</span></code> dengan regressor <code class="docutils literal notranslate"><span class="pre">LGBMRegressor</span></code></p></li>
+<li><p>Parameter: <code class="docutils literal notranslate"><span class="pre">lags=7</span></code>, <code class="docutils literal notranslate"><span class="pre">random_state=123</span></code></p></li>
+<li><p>Fit model dengan <code class="docutils literal notranslate"><span class="pre">y=Demand</span></code> (target) dan <code class="docutils literal notranslate"><span class="pre">exog=Temperature</span></code> (variabel eksogen)</p></li>
+<li><p>Skforecast otomatis membuat matriks lag dan melatih model regresi di atasnya</p></li>
+</ul>
+</section>
+<section id="tahap-3-feature-importance-lightgbm-bawaan">
+<h3>Tahap 3 — Feature Importance (LightGBM Bawaan)<a class="headerlink" href="#tahap-3-feature-importance-lightgbm-bawaan" title="Link to this heading">#</a></h3>
+<p>Menggunakan atribut <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code> dari LGBMRegressor:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Fitur</p></th>
+<th class="head text-left"><p>Importance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Temperature</p></td>
+<td class="text-left"><p>570</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_1</p></td>
+<td class="text-left"><p>470</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>lag_3</p></td>
+<td class="text-left"><p>387</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_2</p></td>
+<td class="text-left"><p>362</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>lag_7</p></td>
+<td class="text-left"><p>325</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_6</p></td>
+<td class="text-left"><p>313</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>lag_5</p></td>
+<td class="text-left"><p>298</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_4</p></td>
+<td class="text-left"><p>275</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Kesimpulan:</strong> Temperature dan lag_1 adalah dua fitur paling dominan.</p>
+</section>
+<section id="tahap-4-shap-values">
+<h3>Tahap 4 — SHAP Values<a class="headerlink" href="#tahap-4-shap-values" title="Link to this heading">#</a></h3>
+<p>Menggunakan <code class="docutils literal notranslate"><span class="pre">shap.TreeExplainer(forecaster.estimator)</span></code> untuk menjelaskan kontribusi setiap fitur terhadap setiap prediksi secara individual.</p>
+<p>Empat visualisasi yang dihasilkan:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Plot</p></th>
+<th class="head text-left"><p>Fungsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Summary Bar</strong></p></td>
+<td class="text-left"><p>Ranking kepentingan fitur secara global</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Summary Dot (Beeswarm)</strong></p></td>
+<td class="text-left"><p>Arah pengaruh fitur (positif/negatif) dan distribusinya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Waterfall</strong></p></td>
+<td class="text-left"><p>Penjelasan detail untuk satu observasi spesifik</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Scatter (Dependence)</strong></p></td>
+<td class="text-left"><p>Hubungan nilai Temperature vs kontribusi SHAP-nya</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tahap-5-prediksi-10-hari-ke-depan">
+<h3>Tahap 5 — Prediksi 10 Hari ke Depan<a class="headerlink" href="#tahap-5-prediksi-10-hari-ke-depan" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prediksi</span> <span class="o">=</span> <span class="n">forecaster</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">exog</span><span class="o">=</span><span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Hasil prediksi:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Tanggal</p></th>
+<th class="head text-left"><p>Demand (MW)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>22 Des 2014</p></td>
+<td class="text-left"><p>241.514</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>23 Des 2014</p></td>
+<td class="text-left"><p>226.165</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>24 Des 2014</p></td>
+<td class="text-left"><p>220.506</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>25 Des 2014</p></td>
+<td class="text-left"><p>209.260</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>26 Des 2014</p></td>
+<td class="text-left"><p>184.885 ← terendah</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>27 Des 2014</p></td>
+<td class="text-left"><p>195.623</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>28 Des 2014</p></td>
+<td class="text-left"><p>222.766</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>29 Des 2014</p></td>
+<td class="text-left"><p>223.112</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>30 Des 2014</p></td>
+<td class="text-left"><p>219.103</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>31 Des 2014</p></td>
+<td class="text-left"><p>217.948</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Model bekerja <strong>secara rekursif</strong>: prediksi hari ini menjadi <code class="docutils literal notranslate"><span class="pre">lag_1</span></code> untuk prediksi hari berikutnya.</p>
+</section>
+<section id="tahap-6-permutation-importance">
+<h3>Tahap 6 — Permutation Importance<a class="headerlink" href="#tahap-6-permutation-importance" title="Link to this heading">#</a></h3>
+<p>Mengacak satu fitur secara acak, lalu mengukur seberapa besar performa model turun.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Fitur</p></th>
+<th class="head text-left"><p>Mean Importance</p></th>
+<th class="head text-left"><p>Std</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>lag_1</p></td>
+<td class="text-left"><p>0.617</p></td>
+<td class="text-left"><p>0.015</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Temperature</p></td>
+<td class="text-left"><p>0.411</p></td>
+<td class="text-left"><p>0.014</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>lag_7</p></td>
+<td class="text-left"><p>0.196</p></td>
+<td class="text-left"><p>0.002</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_2</p></td>
+<td class="text-left"><p>0.122</p></td>
+<td class="text-left"><p>0.008</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>lag_6</p></td>
+<td class="text-left"><p>0.084</p></td>
+<td class="text-left"><p>0.004</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_3</p></td>
+<td class="text-left"><p>0.041</p></td>
+<td class="text-left"><p>0.002</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>lag_5</p></td>
+<td class="text-left"><p>0.031</p></td>
+<td class="text-left"><p>0.001</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>lag_4</p></td>
+<td class="text-left"><p>0.025</p></td>
+<td class="text-left"><p>0.001</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Catatan penting:</strong> Hasil berbeda dengan LightGBM importance — di sini <code class="docutils literal notranslate"><span class="pre">lag_1</span></code> (0.617) lebih krusial dari <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> (0.411). Ini karena permutation importance mengukur <strong>degradasi performa nyata</strong> saat fitur dihilangkan.</p>
+</section>
+<section id="tahap-7-partial-dependence-plot-pdp">
+<h3>Tahap 7 — Partial Dependence Plot (PDP)<a class="headerlink" href="#tahap-7-partial-dependence-plot-pdp" title="Link to this heading">#</a></h3>
+<p>Menggunakan <code class="docutils literal notranslate"><span class="pre">PartialDependenceDisplay.from_estimator</span></code> dari scikit-learn untuk memvisualisasikan pengaruh <strong>murni</strong> satu fitur terhadap prediksi, dengan fitur lain dirata-ratakan. Fitur yang divisualisasikan: <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> dan <code class="docutils literal notranslate"><span class="pre">lag_1</span></code>.</p>
+<p>PDP menunjukkan pola marginal: misalnya suhu tinggi → demand cenderung meningkat.</p>
+</section>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Dari ketiga metode explainability yang digunakan (Feature Importance, SHAP, Permutation Importance), secara konsisten ditemukan bahwa:</p>
+<ol class="arabic simple">
+<li><p><strong>Suhu udara (Temperature)</strong> dan <strong>demand hari sebelumnya (lag_1)</strong> adalah dua faktor paling menentukan konsumsi listrik harian di Victoria.</p></li>
+<li><p>Kedua faktor ini saling melengkapi: <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> penting karena cuaca panas/dingin langsung memengaruhi penggunaan AC/pemanas, sementara <code class="docutils literal notranslate"><span class="pre">lag_1</span></code> menangkap inersia pola konsumsi harian.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lag_7</span></code> (seminggu lalu) juga cukup penting, mengonfirmasi adanya <strong>pola mingguan</strong> dalam data konsumsi listrik.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="prediksi-no2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Prediksi Kadar Nitrogen Dioksida (NO₂) di Kota Probolinggo Menggunakan Algoritma K-Nearest Neighbor (KNN)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-permintaan-listrik-victoria-australia">Prediksi Permintaan Listrik Victoria, Australia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-prediksi-tentang-apa">1. Analisis Prediksi Tentang Apa?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-data-training-input-dan-output">2. Bentuk Data Training (Input dan Output)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lag">3. Apa Itu Lag?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-matematis">Definisi matematis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-lags-7">Mengapa lags=7?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analogi-sederhana">Analogi sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-analisis-yang-dilakukan">4. Proses Analisis yang Dilakukan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-persiapan-data">Tahap 1 — Persiapan Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-membangun-dan-melatih-model">Tahap 2 — Membangun dan Melatih Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-feature-importance-lightgbm-bawaan">Tahap 3 — Feature Importance (LightGBM Bawaan)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-shap-values">Tahap 4 — SHAP Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-prediksi-10-hari-ke-depan">Tahap 5 — Prediksi 10 Hari ke Depan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-permutation-importance">Tahap 6 — Permutation Importance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-7-partial-dependence-plot-pdp">Tahap 7 — Partial Dependence Plot (PDP)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fitria Cahaya Kurnia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
