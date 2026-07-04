@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>UAS | Analisis Dataset Higher Education Students Performance Evaluation &#8212; Fitria&#39;s Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uas_pendat';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="UAS | Analisis Dataset Higher Education Students Performance Evaluation" href="UAS.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fitri.jpeg" class="logo__image only-light" alt="Fitria's Notes - Home"/>
+    <img src="_static/fitri.jpeg" class="logo__image only-dark pst-js-only" alt="Fitria's Notes - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    240411100192 Fitria Cahaya Kurnia
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business-understanding.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-understanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-preparation.html">Data Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imputasi-missing-value.html">Imputasi Missing Value dan Materi Normalisasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html">UTS | Analisa Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naive-bayess.html">Analisis Data Menggunakan Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision-tree.html">Implementasi Decision Tree Menggunakan KNIME pada Dataset Heart Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random-forest.html">Implementasi Rendom Forest Menggunakan Script Python pada KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Analisis Data Menggunakan Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prediksi-no2.html">Prediksi Kadar Nitrogen Dioksida (NO₂) di Kota Probolinggo Menggunakan Algoritma K-Nearest Neighbor (KNN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis-skforecast-explainability.html">Analisis Skforecast Explainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UAS.html">UAS | Analisis Dataset Higher Education Students Performance Evaluation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">UAS | Analisis Dataset Higher Education Students Performance Evaluation</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fuas_pendat.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uas_pendat.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>UAS | Analisis Dataset Higher Education Students Performance Evaluation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">UAS | Analisis Dataset Higher Education Students Performance Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nama-fitria-cahaya-kurnia">Nama : Fitria Cahaya Kurnia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nim-240411100192">NIM : 240411100192</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-pendata-b">Kelas : Pendata B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-penjelasan-dataset-yang-digunakan">A. Penjelasan Dataset yang Digunakan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-analisis-dataset-menggunakan-knime">B. Analisis Dataset Menggunakan KNIME</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">1. Business Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2. Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data">Analisis Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">3. Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-eda">Analisis Hasil EDA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">4. Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mining-menggunakan-random-forest">Data Mining Menggunakan Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-model">Analisis Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">5. Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">Evaluasi Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi">Analisis Hasil Evaluasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#c-kesimpulan">C. Kesimpulan</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uas-analisis-dataset-higher-education-students-performance-evaluation">
+<h1>UAS | Analisis Dataset Higher Education Students Performance Evaluation<a class="headerlink" href="#uas-analisis-dataset-higher-education-students-performance-evaluation" title="Link to this heading">#</a></h1>
+<section id="nama-fitria-cahaya-kurnia">
+<h2>Nama : Fitria Cahaya Kurnia<a class="headerlink" href="#nama-fitria-cahaya-kurnia" title="Link to this heading">#</a></h2>
+</section>
+<section id="nim-240411100192">
+<h2>NIM : 240411100192<a class="headerlink" href="#nim-240411100192" title="Link to this heading">#</a></h2>
+</section>
+<section id="kelas-pendata-b">
+<h2>Kelas : Pendata B<a class="headerlink" href="#kelas-pendata-b" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="a-penjelasan-dataset-yang-digunakan">
+<h1>A. Penjelasan Dataset yang Digunakan<a class="headerlink" href="#a-penjelasan-dataset-yang-digunakan" title="Link to this heading">#</a></h1>
+<p>Dataset yang digunakan dalam UAS ini adalah <strong>Higher Education Students Performance Evaluation</strong> yang diperoleh dari <strong>UCI Machine Learning Repository</strong> (<a class="reference external" href="https://archive.ics.uci.edu/dataset/856/higher+education+students+performance+evaluation">https://archive.ics.uci.edu/dataset/856/higher+education+students+performance+evaluation</a>). Dataset ini berisi data <strong>145 mahasiswa</strong> dengan <strong>33 atribut</strong> yang mencakup faktor pribadi, kondisi keluarga, kebiasaan belajar, dan aktivitas akademik mahasiswa. Variabel target pada dataset ini adalah <strong>GRADE</strong>, yaitu nilai akhir mahasiswa yang digunakan untuk mengukur performa akademik. Dataset ini digunakan untuk menganalisis faktor-faktor yang mempengaruhi keberhasilan akademik mahasiswa menggunakan teknik Data Mining.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="b-analisis-dataset-menggunakan-knime">
+<h1>B. Analisis Dataset Menggunakan KNIME<a class="headerlink" href="#b-analisis-dataset-menggunakan-knime" title="Link to this heading">#</a></h1>
+<p><img alt="" src="https://cdn.mathpix.com/snip/images/0yry3-OkLwGwRp1hoM4Omc4O_KAnKQDS6ctp7UVIix4.original.fullsize.png" /></p>
+<section id="business-understanding">
+<h2>1. Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
+<p>Pada tahap <strong>Business Understanding</strong>, tujuan utama analisis adalah mengetahui faktor-faktor yang mempengaruhi performa akademik mahasiswa berdasarkan data yang tersedia. Informasi tersebut diharapkan dapat membantu pihak perguruan tinggi dalam memahami karakteristik mahasiswa yang memperoleh nilai akademik tinggi maupun rendah sehingga dapat dijadikan sebagai bahan evaluasi dalam meningkatkan kualitas pembelajaran.</p>
+<p>Dataset yang digunakan berisi berbagai informasi mengenai mahasiswa, seperti kondisi keluarga, kebiasaan belajar, aktivitas selama perkuliahan, serta faktor-faktor lain yang diduga berpengaruh terhadap hasil akademik. Variabel yang menjadi target prediksi adalah <strong>GRADE</strong>, yaitu nilai akhir mahasiswa.</p>
+<p>Permasalahan yang ingin diselesaikan adalah bagaimana membangun model klasifikasi yang mampu memprediksi kategori nilai mahasiswa berdasarkan atribut-atribut yang tersedia. Untuk menyelesaikan permasalahan tersebut digunakan algoritma <strong>Random Forest</strong>, karena algoritma ini mampu melakukan klasifikasi dengan menggabungkan banyak pohon keputusan (<em>decision tree</em>) sehingga hasil prediksi menjadi lebih stabil.</p>
+<p>Melalui proses data mining ini diharapkan dapat diketahui apakah atribut-atribut yang terdapat pada dataset mampu digunakan untuk memprediksi performa akademik mahasiswa serta memberikan gambaran mengenai faktor-faktor yang berhubungan dengan nilai akhir mahasiswa.</p>
+</section>
+<hr class="docutils" />
+<section id="data-understanding">
+<h2>2. Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<p>Pada tahap ini saya menggunakan node <strong>CSV Reader</strong> untuk membaca dataset dan memahami struktur data yang akan dianalisis. Melalui node ini saya dapat melihat jumlah data, jumlah atribut, nama kolom, serta tipe data yang digunakan.</p>
+<p>Berdasarkan hasil pengamatan, dataset terdiri dari <strong>145 data mahasiswa</strong> dengan <strong>33 atribut</strong>. Data yang tersedia mencakup berbagai faktor yang diduga mempengaruhi performa akademik mahasiswa, seperti pendidikan orang tua, jam belajar, kehadiran di kelas, aktivitas diskusi, serta nilai tugas dan proyek.</p>
+<p><img alt="" src="https://cdn.mathpix.com/snip/images/83t6BC06W4qzPtqUSrX7KMkQnLJ9aB03Kc5EzxqsYk0.original.fullsize.png" /></p>
+<p>Tahap ini dilakukan untuk memperoleh pemahaman awal mengenai dataset sebelum memasuki proses analisis yang lebih lanjut.</p>
+<section id="analisis-data">
+<h3>Analisis Data<a class="headerlink" href="#analisis-data" title="Link to this heading">#</a></h3>
+<p>Berdasarkan hasil pengamatan terhadap dataset, diketahui bahwa setiap atribut memiliki fungsi yang berbeda dalam menggambarkan karakteristik mahasiswa. Variabel-variabel tersebut mencerminkan berbagai aspek yang dapat mempengaruhi performa akademik, mulai dari kondisi keluarga, kebiasaan belajar, hingga aktivitas mahasiswa selama mengikuti perkuliahan.</p>
+<p>Jumlah atribut yang cukup banyak dibandingkan jumlah data menunjukkan bahwa model harus mempelajari hubungan yang kompleks antar variabel. Selain itu, keberagaman karakteristik mahasiswa menunjukkan bahwa dataset memiliki variasi data yang cukup baik untuk dilakukan proses klasifikasi menggunakan algoritma machine learning.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-preparation">
+<h2>3. Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<section id="data-cleaning">
+<h3>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h3>
+<p>Pada tahap Data Cleaning saya menggunakan node <strong>Number To String</strong> dan <strong>Domain Calculator</strong>.</p>
+<p>Node <strong>Number To String</strong> digunakan untuk mengubah atribut <strong>GRADE</strong> dari tipe numerik menjadi tipe kategorikal (string). Langkah ini diperlukan karena algoritma Random Forest yang digunakan merupakan metode klasifikasi sehingga target harus berupa kategori.</p>
+<p>Selanjutnya saya menggunakan node <strong>Domain Calculator</strong> untuk membentuk domain atau daftar nilai yang mungkin muncul pada setiap atribut. Proses ini membantu KNIME mengenali kategori yang tersedia sehingga data dapat diproses dengan baik oleh model klasifikasi.</p>
+<p>Berdasarkan hasil pemeriksaan, dataset tidak menunjukkan adanya masalah yang menghambat proses analisis sehingga data dapat langsung digunakan untuk tahap berikutnya.</p>
+</section>
+<section id="exploratory-data-analysis-eda">
+<h3>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Link to this heading">#</a></h3>
+<p>Pada tahap EDA saya menggunakan node <strong>Statistics</strong> dan <strong>Statistics View</strong> untuk memperoleh gambaran umum mengenai karakteristik dataset.</p>
+<p>Node Statistics menghasilkan berbagai informasi statistik deskriptif seperti nilai minimum, maksimum, rata-rata, dan standar deviasi dari setiap atribut. Informasi ini digunakan untuk memahami penyebaran data dan melihat variasi yang terdapat pada masing-masing variabel.</p>
+<p>Melalui Statistics View, saya dapat melihat ringkasan statistik dalam bentuk yang lebih mudah dibaca dan dianalisis. Hasil analisis menunjukkan bahwa setiap atribut memiliki karakteristik yang berbeda-beda, yang mengindikasikan adanya variasi kondisi antar mahasiswa dalam dataset.</p>
+<p>Tahap EDA membantu saya memahami pola data sebelum dilakukan proses pemodelan menggunakan algoritma machine learning.</p>
+</section>
+<section id="analisis-hasil-eda">
+<h3>Analisis Hasil EDA<a class="headerlink" href="#analisis-hasil-eda" title="Link to this heading">#</a></h3>
+<p>Berdasarkan hasil Statistics View, setiap atribut memiliki distribusi nilai yang berbeda-beda. Hal ini menunjukkan bahwa karakteristik mahasiswa dalam dataset cukup beragam. Perbedaan tersebut terlihat dari variasi kebiasaan belajar, kehadiran, aktivitas diskusi, maupun faktor-faktor lainnya.</p>
+<p>Selain itu, hasil pemeriksaan menunjukkan bahwa dataset dapat diproses tanpa mengalami kendala yang berarti sehingga seluruh data dapat langsung digunakan pada tahap pemodelan. Variasi data yang dimiliki setiap mahasiswa diharapkan dapat membantu algoritma Random Forest dalam menemukan pola hubungan antara atribut dengan nilai akhir mahasiswa.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modeling">
+<h2>4. Modeling<a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
+<section id="data-mining-menggunakan-random-forest">
+<h3>Data Mining Menggunakan Random Forest<a class="headerlink" href="#data-mining-menggunakan-random-forest" title="Link to this heading">#</a></h3>
+<p>Pada tahap Data Mining saya menggunakan algoritma <strong>Random Forest</strong> yang terdiri dari node <strong>Table Partitioner</strong>, <strong>Random Forest Learner</strong>, dan <strong>Random Forest Predictor</strong>.</p>
+<p>Node <strong>Table Partitioner</strong> digunakan untuk membagi dataset menjadi data training dan data testing. Data training digunakan untuk melatih model sebanyak <strong>70%</strong>, sedangkan data testing digunakan sebanyak <strong>30%</strong> untuk menguji kemampuan model dalam melakukan prediksi terhadap data yang belum pernah dipelajari sebelumnya.</p>
+<p><img alt="" src="https://cdn.mathpix.com/snip/images/5FpmAhp_Jxx2aKrfOH59ZAnei7Rd4vu_Red4oL5db3c.original.fullsize.png" /></p>
+<p>Selanjutnya, node <strong>Random Forest Learner</strong> digunakan untuk membangun model klasifikasi. Algoritma Random Forest bekerja dengan membentuk banyak pohon keputusan (<em>decision tree</em>) dan menggabungkan hasil dari setiap pohon untuk menghasilkan prediksi yang lebih stabil. Berdasarkan hasil pemodelan, model Random Forest yang dibangun terdiri dari <strong>100 pohon keputusan</strong>.</p>
+<p><img alt="" src="https://cdn.mathpix.com/snip/images/U4YfREv9NrBN95ASAiUZz0LNlBrDoTYi7CzIYqk8SKY.original.fullsize.png" /></p>
+<p>Setelah model berhasil dibentuk, node <strong>Random Forest Predictor</strong> digunakan untuk melakukan prediksi terhadap data testing. Hasil prediksi kemudian dibandingkan dengan nilai sebenarnya pada tahap evaluasi model.</p>
+</section>
+<section id="analisis-model">
+<h3>Analisis Model<a class="headerlink" href="#analisis-model" title="Link to this heading">#</a></h3>
+<p>Random Forest dipilih karena mampu menangani dataset dengan jumlah atribut yang cukup banyak serta memiliki kemampuan mengurangi risiko overfitting melalui pembentukan banyak pohon keputusan. Pada penelitian ini model dibangun menggunakan <strong>100 decision tree</strong> sehingga setiap pohon memberikan hasil prediksi yang kemudian digabungkan melalui proses voting untuk menghasilkan prediksi akhir.</p>
+<p>Pembagian data menjadi <strong>70% data training</strong> dan <strong>30% data testing</strong> bertujuan agar model dapat dilatih menggunakan sebagian besar data, kemudian diuji menggunakan data yang belum pernah dipelajari sebelumnya sehingga hasil evaluasi dapat menggambarkan kemampuan model dalam melakukan prediksi terhadap data baru.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="evaluation">
+<h2>5. Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<section id="evaluasi-model">
+<h3>Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h3>
+<p>Evaluasi model dilakukan menggunakan node <strong>Scorer</strong>. Node ini digunakan untuk membandingkan hasil prediksi model dengan data aktual sehingga dapat diketahui tingkat performa model.</p>
+<p><img alt="" src="https://cdn.mathpix.com/snip/images/-uoPriCygNsN9R-5fa1w99YqN_Cu6CCTuwaL5pIAf3o.original.fullsize.png" /></p>
+<p>Berdasarkan hasil pengujian, diperoleh nilai <strong>Accuracy sebesar 0,273 atau 27,3%</strong>. Nilai ini menunjukkan bahwa model mampu memprediksi dengan benar sekitar <strong>27,3%</strong> dari seluruh data testing yang digunakan.</p>
+<p>Selain itu, diperoleh nilai <strong>Cohen’s Kappa sebesar 0,109</strong>. Nilai tersebut menunjukkan bahwa tingkat kesesuaian antara hasil prediksi model dan data aktual masih tergolong rendah. Hal ini menunjukkan bahwa model masih mengalami kesulitan dalam menemukan pola yang kuat pada dataset.</p>
+<p>Rendahnya nilai akurasi dapat disebabkan oleh jumlah data yang relatif sedikit, yaitu hanya <strong>145 data mahasiswa</strong>, serta banyaknya kategori nilai (<strong>GRADE</strong>) yang harus diprediksi oleh model.</p>
+</section>
+<section id="analisis-hasil-evaluasi">
+<h3>Analisis Hasil Evaluasi<a class="headerlink" href="#analisis-hasil-evaluasi" title="Link to this heading">#</a></h3>
+<p>Berdasarkan hasil evaluasi, model Random Forest belum mampu memberikan performa yang optimal. Nilai akurasi sebesar <strong>27,3%</strong> menunjukkan bahwa model masih sering melakukan kesalahan dalam mengklasifikasikan kategori nilai mahasiswa.</p>
+<p>Nilai <strong>Cohen’s Kappa sebesar 0,109</strong> juga menunjukkan bahwa tingkat kesepakatan antara hasil prediksi dengan data aktual masih rendah. Hal ini mengindikasikan bahwa hubungan antara atribut-atribut dalam dataset dengan nilai akhir mahasiswa belum dapat dipelajari secara optimal oleh model.</p>
+<p>Beberapa faktor yang diduga mempengaruhi rendahnya performa model antara lain jumlah data yang relatif sedikit, banyaknya kategori pada variabel target (<strong>GRADE</strong>), serta kemungkinan distribusi data yang tidak seimbang pada setiap kategori nilai. Oleh karena itu, model masih mengalami kesulitan dalam menemukan pola yang kuat untuk menghasilkan prediksi yang akurat.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="c-kesimpulan">
+<h1>C. Kesimpulan<a class="headerlink" href="#c-kesimpulan" title="Link to this heading">#</a></h1>
+<p>Berdasarkan analisis yang telah dilakukan menggunakan KNIME, dataset <strong>Higher Education Students Performance Evaluation</strong> memiliki <strong>145 data mahasiswa</strong> dengan <strong>33 atribut</strong> yang menggambarkan berbagai faktor, seperti kondisi keluarga, kebiasaan belajar, aktivitas selama perkuliahan, serta faktor akademik lainnya. Hasil analisis menunjukkan bahwa setiap mahasiswa memiliki karakteristik yang beragam, sehingga memungkinkan dilakukan proses klasifikasi untuk memprediksi nilai akhir (<strong>GRADE</strong>).</p>
+<p>Pada tahap <strong>Data Preparation</strong>, data telah dipersiapkan dengan mengubah atribut <strong>GRADE</strong> menjadi tipe kategorikal menggunakan <strong>Number To String</strong> serta membentuk domain data menggunakan <strong>Domain Calculator</strong>. Hasil pemeriksaan menunjukkan bahwa dataset dapat digunakan untuk proses pemodelan tanpa mengalami kendala yang menghambat analisis.</p>
+<p>Berdasarkan hasil <strong>Exploratory Data Analysis (EDA)</strong>, setiap atribut memiliki karakteristik dan penyebaran nilai yang berbeda-beda. Hal ini menunjukkan adanya variasi kondisi antar mahasiswa, sehingga diperkirakan terdapat hubungan antara faktor-faktor tersebut dengan performa akademik mahasiswa.</p>
+<p>Proses pemodelan menggunakan algoritma <strong>Random Forest</strong> berhasil dilakukan dengan membangun model yang terdiri dari <strong>100 pohon keputusan</strong>. Model kemudian dievaluasi menggunakan node <strong>Scorer</strong> dan menghasilkan nilai <strong>Accuracy sebesar 27,3%</strong> serta <strong>Cohen’s Kappa sebesar 0,109</strong>. Hasil tersebut menunjukkan bahwa kemampuan model dalam memprediksi kategori nilai mahasiswa masih tergolong rendah.</p>
+<p>Rendahnya performa model diduga dipengaruhi oleh jumlah data yang relatif sedikit, yaitu hanya <strong>145 data mahasiswa</strong>, banyaknya kategori pada variabel target (<strong>GRADE</strong>), serta kemungkinan distribusi data yang kurang seimbang. Kondisi tersebut menyebabkan model masih mengalami kesulitan dalam mempelajari pola hubungan antar atribut secara optimal.</p>
+<p>Secara keseluruhan, penelitian ini menunjukkan bahwa tahapan <strong>Business Understanding</strong>, <strong>Data Understanding</strong>, <strong>Data Preparation</strong>, <strong>Modeling</strong>, dan <strong>Evaluation</strong> telah berhasil diterapkan menggunakan KNIME. Selain itu, hasil analisis memberikan gambaran bahwa karakteristik mahasiswa yang beragam dapat dimanfaatkan sebagai dasar dalam membangun model prediksi performa akademik, meskipun diperlukan pengembangan lebih lanjut, seperti penambahan jumlah data, seleksi fitur, atau penggunaan algoritma lain agar diperoleh tingkat akurasi yang lebih baik.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="UAS.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">UAS | Analisis Dataset Higher Education Students Performance Evaluation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">UAS | Analisis Dataset Higher Education Students Performance Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nama-fitria-cahaya-kurnia">Nama : Fitria Cahaya Kurnia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nim-240411100192">NIM : 240411100192</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-pendata-b">Kelas : Pendata B</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-penjelasan-dataset-yang-digunakan">A. Penjelasan Dataset yang Digunakan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-analisis-dataset-menggunakan-knime">B. Analisis Dataset Menggunakan KNIME</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">1. Business Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2. Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data">Analisis Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">3. Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-eda">Analisis Hasil EDA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">4. Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mining-menggunakan-random-forest">Data Mining Menggunakan Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-model">Analisis Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">5. Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">Evaluasi Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi">Analisis Hasil Evaluasi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#c-kesimpulan">C. Kesimpulan</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fitria Cahaya Kurnia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
